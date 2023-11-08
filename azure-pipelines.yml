@@ -11,9 +11,3 @@ steps:
     docker exec $(Build.BuildNumber) bash -c 'cd /app/MyDotNetProject; dotnet publish -c Release -o out'
     docker cp $(Build.BuildNumber):/app/MyDotNetProject/out $(Build.ArtifactStagingDirectory)
   displayName: 'Build in docker and export artifacts'
-
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
