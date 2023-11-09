@@ -41,3 +41,4 @@ steps:
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
     buildContext: $(Build.SourcesDirectory)
+    tags: '$(Build.BuildId)'
