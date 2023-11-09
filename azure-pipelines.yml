@@ -1,19 +1,16 @@
-trigger:
-- main
-
-pool:
-  vmImage: ubuntu-latest
-
-steps:
-- script: |
-    docker run --name $(Build.BuildNumber) -d -t mcr.microsoft.com/dotnet/sdk:6.0
-    docker cp $(Build.Repository.LocalPath)/ $(Build.BuildNumber):/app
-    docker exec $(Build.BuildNumber) bash -c 'cd /app/MyDotNetProject; dotnet publish -c Release -o out'
-    docker cp $(Build.BuildNumber):/app/MyDotNetProject/out $(Build.ArtifactStagingDirectory)
-  displayName: 'Build in docker and export artifacts'
-
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
+jobs:
+- job: Linux
+  pool:
+    vmImage: 'ubuntu-latest'
+  steps:
+  - script: echo hello from Linux
+- job: macOS
+  pool:
+    vmImage: 'macOS-latest'
+  steps:
+  - script: echo hello from macOS
+- job: Windows
+  pool:
+    vmImage: 'windows-latest'
+  steps:
+  - script: echo hello from Windows
