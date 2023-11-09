@@ -39,4 +39,5 @@ steps:
     containerRegistry: 'test_docker'
     repository: 'eShopWeb'
     command: 'buildAndPush'
-    Dockerfile: '/src/PublicApi/Dockerfile'
+    Dockerfile: '**/Dockerfile'
+    buildContext: $(Build.SourcesDirectory)
