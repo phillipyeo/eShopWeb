@@ -46,4 +46,4 @@ steps:
     dockerRegistryEndpoint: 'test_docker'
     dockerComposeFile: '**/docker-compose.yml'
     action: 'Run a Docker Compose command'
-    dockerComposeCommand: 'docker-compose build'
+    dockerComposeCommand: 'build'
