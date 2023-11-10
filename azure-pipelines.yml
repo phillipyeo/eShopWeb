@@ -46,6 +46,7 @@ steps:
     containerRegistry: 'test_docker'
 
 - task: Docker@2
+  displayName: Build and Push to DockerHub
   inputs:
     containerRegistry: 'test_docker'
     repository: 'phillipyeo/eShopWeb'
@@ -65,7 +66,7 @@ steps:
 #     container: eshopweb
 
 - script: 'docker run -d --name eshopweb phillipyeo/eshopweb:latest -p 80:80'
-  displayName: 'Run Docker'
+  displayName: 'Test Run Docker'
 
 # - task: Docker@2
 #   inputs:
