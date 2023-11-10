@@ -15,10 +15,10 @@ variables:
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
-resources:
-  containers:
-  - container: eshopweb
-    image: phillipyeo/eshopweb:20231109.35
+# resources:
+#   containers:
+#   - container: eshopweb
+#     image: phillipyeo/eshopweb:20231109.35
 
 steps:
 # - task: NuGetToolInstaller@1
@@ -65,8 +65,6 @@ steps:
 
 - script: 'docker run -d phillipyeo/eshopweb:20231109.35 --name eshopweb -p 80:80'
   displayName: 'Run Docker'
-  target:
-    container: eshopweb
 
 # - task: Docker@2
 #   inputs:
