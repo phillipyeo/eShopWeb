@@ -39,11 +39,11 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-# - task: Docker@2
-#   displayName: Login to DockerHub
-#   inputs:
-#     command: login
-#     containerRegistry: 'test_docker'
+- task: Docker@2
+  displayName: Login to DockerHub
+  inputs:
+    command: login
+    containerRegistry: 'test_docker'
 
 # - task: Docker@2
 #   inputs:
@@ -57,8 +57,18 @@ steps:
 # - script: echo "I can run inside the container (it starts by default)"
 #   target:
 #     container: eshopweb
+# - task: Docker@2
+#   displayName: start eshopweb
+#   inputs:
+#     command: start
+#     container: eshopweb
+
+- script: |
+    docker run -d phillipyeo/eshopweb:20231109.35
+  displayName: 'Run Docker'
+
 - task: Docker@2
-  displayName: start eshopweb
   inputs:
-    command: start
-    container: eshopweb
+    containerRegistry: 'test_docker'
+    command: 'start'
+    container: 'eshopweb'
