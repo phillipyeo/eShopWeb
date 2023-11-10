@@ -49,9 +49,9 @@ steps:
   displayName: Build and Push to DockerHub
   inputs:
     containerRegistry: 'test_docker'
-    repository: 'phillipyeo/eShopWeb'
+    repository: 'phillipyeo/publicapi'
     command: 'buildAndPush'
-    Dockerfile: '$(Build.SourcesDirectory)/src/Web/Dockerfile'
+    Dockerfile: '$(Build.SourcesDirectory)/src/PublicApi/Dockerfile'
     buildContext: $(Build.SourcesDirectory)
     tags: |
       latest
@@ -60,9 +60,9 @@ steps:
   displayName: Build and Push to DockerHub
   inputs:
     containerRegistry: 'test_docker'
-    repository: 'phillipyeo/publicapi'
+    repository: 'phillipyeo/eShopWeb'
     command: 'buildAndPush'
-    Dockerfile: '$(Build.SourcesDirectory)/src/PublicApi/Dockerfile'
+    Dockerfile: '$(Build.SourcesDirectory)/src/Web/Dockerfile'
     buildContext: $(Build.SourcesDirectory)
     tags: |
       latest
