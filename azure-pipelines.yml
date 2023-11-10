@@ -63,12 +63,15 @@ steps:
 #     command: start
 #     container: eshopweb
 
-# - script: |
-#     docker run -d phillipyeo/eshopweb:20231109.35 --name eshopwebcontainer -p 80:80
-#   displayName: 'Run Docker'
+- script: |
+    docker run -d phillipyeo/eshopweb:20231109.35 --name eshopweb -p 80:80
+  displayName: 'Run Docker'
+  target:
+    container: eshopweb
 
-- task: Docker@2
-  inputs:
-    containerRegistry: 'test_docker'
-    command: 'start'
-    container: 'eshopweb'
+# - task: Docker@2
+#   inputs:
+#     containerRegistry: 'test_docker'
+#     command: 'start'
+#     container: 'eshopweb'
+    
