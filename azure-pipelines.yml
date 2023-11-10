@@ -65,7 +65,7 @@ steps:
 #     command: start
 #     container: eshopweb
 
-- script: 'docker run -d --name eshopweb phillipyeo/eshopweb -p 80:80'
+- script: 'docker run -d --name eshopweb phillipyeo/eshopweb:latest -p 80:80'
   displayName: 'Run Docker'
 
 # - task: Docker@2
