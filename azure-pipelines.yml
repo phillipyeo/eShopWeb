@@ -45,14 +45,14 @@ steps:
     command: login
     containerRegistry: 'test_docker'
 
-# - task: Docker@2
-#   inputs:
-#     containerRegistry: 'test_docker'
-#     repository: 'phillipyeo/eShopWeb'
-#     command: 'buildAndPush'
-#     Dockerfile: '**/Dockerfile'
-#     buildContext: $(Build.SourcesDirectory)
-#     tags: '$(Build.BuildNumber)'
+- task: Docker@2
+  inputs:
+    containerRegistry: 'test_docker'
+    repository: 'phillipyeo/eShopWeb'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
+    buildContext: $(Build.SourcesDirectory)
+    # tags: '$(Build.BuildNumber)'
 
 # - script: echo "I can run inside the container (it starts by default)"
 #   target:
@@ -63,7 +63,7 @@ steps:
 #     command: start
 #     container: eshopweb
 
-- script: 'docker run -d --name eshopweb phillipyeo/eshopweb:20231109.35 -p 80:80'
+- script: 'docker run -d --name eshopweb phillipyeo/eshopweb -p 80:80'
   displayName: 'Run Docker'
 
 # - task: Docker@2
