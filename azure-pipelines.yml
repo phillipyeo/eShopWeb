@@ -64,7 +64,7 @@ steps:
 #     container: eshopweb
 
 - script: |
-    docker run -d phillipyeo/eshopweb:20231109.35
+    docker run -d phillipyeo/eshopweb:20231109.35 --name eshopweb 
   displayName: 'Run Docker'
 
 - task: Docker@2
