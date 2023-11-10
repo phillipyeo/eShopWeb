@@ -52,7 +52,7 @@ steps:
     repository: 'phillipyeo/eShopWeb'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
-    buildContext: $(Build.SourcesDirectory)
+    # buildContext: $(Build.SourcesDirectory)
     tags: |
       latest
 
