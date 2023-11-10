@@ -51,8 +51,19 @@ steps:
     containerRegistry: 'test_docker'
     repository: 'phillipyeo/eShopWeb'
     command: 'buildAndPush'
-    Dockerfile: '**/Dockerfile'
-    # buildContext: $(Build.SourcesDirectory)
+    Dockerfile: '$(Build.SourcesDirectory)/src/Web/Dockerfile'
+    buildContext: $(Build.SourcesDirectory)
+    tags: |
+      latest
+
+- task: Docker@2
+  displayName: Build and Push to DockerHub
+  inputs:
+    containerRegistry: 'test_docker'
+    repository: 'phillipyeo/publicapi'
+    command: 'buildAndPush'
+    Dockerfile: '$(Build.SourcesDirectory)/src/PublicApi/Dockerfile'
+    buildContext: $(Build.SourcesDirectory)
     tags: |
       latest
 
