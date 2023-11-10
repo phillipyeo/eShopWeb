@@ -54,7 +54,6 @@ steps:
     buildContext: $(Build.SourcesDirectory)
     tags: |
       latest
-      $(Build.BuildId)
 
 # - script: echo "I can run inside the container (it starts by default)"
 #   target:
