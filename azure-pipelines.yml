@@ -52,7 +52,9 @@ steps:
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
     buildContext: $(Build.SourcesDirectory)
-    # tags: '$(Build.BuildNumber)'
+    tags: |
+      latest
+      $(Build.BuildId)
 
 # - script: echo "I can run inside the container (it starts by default)"
 #   target:
