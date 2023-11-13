@@ -75,7 +75,7 @@ steps:
     command: 'build'
     Dockerfile: '$(Build.SourcesDirectory)/src/Web/Dockerfile'
     buildContext: $(Build.SourcesDirectory)
-    arguments: '--build-arg CORECLR_PROFILER_PATH_64=/contrast/runtimes/linux-x64/native/ContrastProfiler.so --build-arg CORECLR_ENABLE_PROFILING=1 --build-arg CORECLR_PROFILER={8B2CE134-0948-48CA-A4B2-80DDAD9F5791}'
+    arguments: '--env CORECLR_PROFILER_PATH_64=/contrast/runtimes/linux-x64/native/ContrastProfiler.so --env CORECLR_ENABLE_PROFILING=1 --env CORECLR_PROFILER={8B2CE134-0948-48CA-A4B2-80DDAD9F5791}'
     tags: |
       latest
       $(Build.BuildId)
