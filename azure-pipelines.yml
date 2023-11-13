@@ -67,16 +67,18 @@ steps:
 #     tags: |
 #       latest
 
-# - task: Docker@2
-#   displayName: Build and Push to DockerHub
-#   inputs:
-#     containerRegistry: 'test_docker'
-#     repository: 'phillipyeo/eShopWeb'
-#     command: 'build'
-#     Dockerfile: '$(Build.SourcesDirectory)/src/Web/Dockerfile'
-#     buildContext: $(Build.SourcesDirectory)
-#     tags: |
-#       latest
+- task: Docker@2
+  displayName: Build eshopweb
+  inputs:
+    containerRegistry: 'test_docker'
+    repository: 'phillipyeo/eShopWeb'
+    command: 'build'
+    Dockerfile: '$(Build.SourcesDirectory)/src/Web/Dockerfile'
+    buildContext: $(Build.SourcesDirectory)
+    arguments: '--build-arg CORECLR_PROFILER_PATH_64=/contrast/runtimes/linux-x64/native/ContrastProfiler.so --build-arg CORECLR_ENABLE_PROFILING=1 --build-arg CORECLR_PROFILER={8B2CE134-0948-48CA-A4B2-80DDAD9F5791}'
+    tags: |
+      latest
+      $(Build.BuildId)
 
 # - script: echo "I can run inside the container (it starts by default)"
 #   target:
@@ -88,8 +90,9 @@ steps:
 #     container: eshopweb
 
 - script: 'curl -L https://www.nuget.org/api/v2/package/Contrast.SensorsNetCore --output Contrast.SensorsNetCore.zip'
-  displayName: 'Curl'
+  displayName: 'Download Contrast'
 - task: ExtractFiles@1
+  displayName: 'Unzip Contrast'
   inputs:
     archiveFilePatterns: '**/*.zip'
     destinationFolder: 'C:\contrast'
