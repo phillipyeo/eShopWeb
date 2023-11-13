@@ -45,16 +45,16 @@ steps:
 #     command: login
 #     containerRegistry: 'test_docker'
 
-- task: Docker@2
-  displayName: Build and Push to DockerHub
-  inputs:
-    containerRegistry: 'test_docker'
-    repository: 'phillipyeo/sqlserver'
-    command: 'buildAndPush'
-    Dockerfile: '$(Build.SourcesDirectory)/src/SqlServer/Dockerfile'
-    buildContext: $(Build.SourcesDirectory)
-    tags: |
-      latest
+# - task: Docker@2
+#   displayName: Build and Push to DockerHub
+#   inputs:
+#     containerRegistry: 'test_docker'
+#     repository: 'phillipyeo/sqlserver'
+#     command: 'buildAndPush'
+#     Dockerfile: '$(Build.SourcesDirectory)/src/SqlServer/Dockerfile'
+#     buildContext: $(Build.SourcesDirectory)
+#     tags: |
+#       latest
 
 # - task: Docker@2
 #   displayName: Build and Push to DockerHub
@@ -87,7 +87,7 @@ steps:
 #     command: start
 #     container: eshopweb
 
-- script: 'docker run -d --name sqlserver phillipyeo/sqlserver:latest -p 1433:1433'
+- script: 'docker run --cap-add SYS_PTRACE -e "ACCEPT_EULA=1" -e "MSSQL_SA_PASSWORD=123456" -p 1433:1433 --name azuresqledge -d mcr.microsoft.com/azure-sql-edge'
   displayName: 'Test Run Docker'
 
 - script: 'docker run -d --name publicapi phillipyeo/publicapi:latest -p 5200:80'
