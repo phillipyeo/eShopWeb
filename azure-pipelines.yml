@@ -45,38 +45,38 @@ steps:
 #     command: login
 #     containerRegistry: 'test_docker'
 
-- task: Docker@2
-  displayName: Build and Push to DockerHub
-  inputs:
-    containerRegistry: 'test_docker'
-    repository: 'phillipyeo/sqlserver'
-    command: 'build'
-    Dockerfile: '$(Build.SourcesDirectory)/src/SqlServer/Dockerfile'
-    buildContext: $(Build.SourcesDirectory)
-    tags: |
-      latest
+# - task: Docker@2
+#   displayName: Build and Push to DockerHub
+#   inputs:
+#     containerRegistry: 'test_docker'
+#     repository: 'phillipyeo/sqlserver'
+#     command: 'build'
+#     Dockerfile: '$(Build.SourcesDirectory)/src/SqlServer/Dockerfile'
+#     buildContext: $(Build.SourcesDirectory)
+#     tags: |
+#       latest
 
-- task: Docker@2
-  displayName: Build and Push to DockerHub
-  inputs:
-    containerRegistry: 'test_docker'
-    repository: 'phillipyeo/publicapi'
-    command: 'build'
-    Dockerfile: '$(Build.SourcesDirectory)/src/PublicApi/Dockerfile'
-    buildContext: $(Build.SourcesDirectory)
-    tags: |
-      latest
+# - task: Docker@2
+#   displayName: Build and Push to DockerHub
+#   inputs:
+#     containerRegistry: 'test_docker'
+#     repository: 'phillipyeo/publicapi'
+#     command: 'build'
+#     Dockerfile: '$(Build.SourcesDirectory)/src/PublicApi/Dockerfile'
+#     buildContext: $(Build.SourcesDirectory)
+#     tags: |
+#       latest
 
-- task: Docker@2
-  displayName: Build and Push to DockerHub
-  inputs:
-    containerRegistry: 'test_docker'
-    repository: 'phillipyeo/eShopWeb'
-    command: 'build'
-    Dockerfile: '$(Build.SourcesDirectory)/src/Web/Dockerfile'
-    buildContext: $(Build.SourcesDirectory)
-    tags: |
-      latest
+# - task: Docker@2
+#   displayName: Build and Push to DockerHub
+#   inputs:
+#     containerRegistry: 'test_docker'
+#     repository: 'phillipyeo/eShopWeb'
+#     command: 'build'
+#     Dockerfile: '$(Build.SourcesDirectory)/src/Web/Dockerfile'
+#     buildContext: $(Build.SourcesDirectory)
+#     tags: |
+#       latest
 
 # - script: echo "I can run inside the container (it starts by default)"
 #   target:
@@ -87,13 +87,13 @@ steps:
 #     command: start
 #     container: eshopweb
 
-- script: 'docker run --cap-add SYS_PTRACE -p 1433:1433 --name azuresqledge -d phillipyeo/publicapi:latest'
+- script: 'docker run -p 1433:1433 --name azuresqledge -d phillipyeo/publicapi:latest'
   displayName: 'Test Run Docker'
 
-- script: 'docker run -d --name publicapi phillipyeo/publicapi:latest -p 5200:5200'
+- script: 'docker run -p 5200:80--name publicapi -d  phillipyeo/publicapi:latest'
   displayName: 'Test Run Docker'
 
-- script: 'docker run -d --name eshopweb phillipyeo/eshopweb:latest -p 5106:5106'
+- script: 'docker run -p 5106:80 --name eshopweb -d phillipyeo/eshopweb:latest'
   displayName: 'Test Run Docker'
 
 # - task: Docker@2
