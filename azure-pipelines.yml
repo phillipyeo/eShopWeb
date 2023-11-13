@@ -90,10 +90,10 @@ steps:
 - script: 'docker run --cap-add SYS_PTRACE -e "ACCEPT_EULA=1" -e "MSSQL_SA_PASSWORD=@someThingComplicated1234" -p 1433:1433 --name azuresqledge -d mcr.microsoft.com/azure-sql-edge'
   displayName: 'Test Run Docker'
 
-- script: 'docker run -d --name publicapi phillipyeo/publicapi:latest -p 5200:80'
+- script: 'docker run -d --name publicapi phillipyeo/publicapi:latest -p 5200:5200'
   displayName: 'Test Run Docker'
 
-- script: 'docker run -d --name eshopweb phillipyeo/eshopweb:latest -p 5106:80'
+- script: 'docker run -d --name eshopweb phillipyeo/eshopweb:latest -p 5106:5106'
   displayName: 'Test Run Docker'
 
 # - task: Docker@2
