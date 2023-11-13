@@ -87,7 +87,13 @@ steps:
 #     command: start
 #     container: eshopweb
 
-- script: 'docker run -d --name eshopweb phillipyeo/eshopweb:latest -p 80:80'
+- script: 'docker run -d --name eshopweb phillipyeo/sqlserver:latest -p 1433:1433'
+  displayName: 'Test Run Docker'
+
+- script: 'docker run -d --name eshopweb phillipyeo/publicapi:latest -p 5200:80'
+  displayName: 'Test Run Docker'
+
+- script: 'docker run -d --name eshopweb phillipyeo/eshopweb:latest -p 5106:80'
   displayName: 'Test Run Docker'
 
 # - task: Docker@2
