@@ -90,7 +90,7 @@ steps:
 - script: 'docker run -p 1433:1433 --name azuresqledge -d phillipyeo/publicapi:latest'
   displayName: 'Test Run Docker'
 
-- script: 'docker run -p 5200:80--name publicapi -d  phillipyeo/publicapi:latest'
+- script: 'docker run -p 5200:80 --name publicapi -d  phillipyeo/publicapi:latest'
   displayName: 'Test Run Docker'
 
 - script: 'docker run -p 5106:80 --name eshopweb -d phillipyeo/eshopweb:latest'
