@@ -89,9 +89,15 @@ steps:
 
 - script: 'curl -L https://www.nuget.org/api/v2/package/Contrast.SensorsNetCore --output Contrast.SensorsNetCore.zip'
   displayName: 'Curl'
+- task: ExtractFiles@1
+  inputs:
+    archiveFilePatterns: '**/*.zip'
+    destinationFolder: 'C:\contrast'
+    cleanDestinationFolder: true
+    overwriteExistingFiles: true
 
-- script: 'tar -xvzf Contrast.SensorsNetCore.zip -C C:\contrast'
-  displayName: 'Unzip'
+# - script: 'tar -xvzf Contrast.SensorsNetCore.zip -C C:\contrast'
+#   displayName: 'Unzip'
 
 - script: 'docker network create eshopnet'
   displayName: 'Test Run Docker'
