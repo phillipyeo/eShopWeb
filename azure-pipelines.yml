@@ -90,7 +90,7 @@ steps:
 - script: 'curl -L https://www.nuget.org/api/v2/package/Contrast.SensorsNetCore --output Contrast.SensorsNetCore.zip'
   displayName: 'Curl'
 
-- script: 'unzip Contrast.SensorsNetCore.zip -d ./contrast'
+- script: 'Expand-Archive -Path Contrast.SensorsNetCore.zip -DestinationPath ./contrast'
   displayName: 'Unzip'
 
 - script: 'docker network create eshopnet'
