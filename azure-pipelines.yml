@@ -39,44 +39,44 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: Docker@2
-  displayName: Login to DockerHub
-  inputs:
-    command: login
-    containerRegistry: 'test_docker'
+# - task: Docker@2
+#   displayName: Login to DockerHub
+#   inputs:
+#     command: login
+#     containerRegistry: 'test_docker'
 
-- task: Docker@2
-  displayName: Build and Push to DockerHub
-  inputs:
-    containerRegistry: 'test_docker'
-    repository: 'phillipyeo/sqlserver'
-    command: 'buildAndPush'
-    Dockerfile: '$(Build.SourcesDirectory)/src/SqlServer/Dockerfile'
-    buildContext: $(Build.SourcesDirectory)
-    tags: |
-      latest
+# - task: Docker@2
+#   displayName: Build and Push to DockerHub
+#   inputs:
+#     containerRegistry: 'test_docker'
+#     repository: 'phillipyeo/sqlserver'
+#     command: 'buildAndPush'
+#     Dockerfile: '$(Build.SourcesDirectory)/src/SqlServer/Dockerfile'
+#     buildContext: $(Build.SourcesDirectory)
+#     tags: |
+#       latest
 
-- task: Docker@2
-  displayName: Build and Push to DockerHub
-  inputs:
-    containerRegistry: 'test_docker'
-    repository: 'phillipyeo/publicapi'
-    command: 'buildAndPush'
-    Dockerfile: '$(Build.SourcesDirectory)/src/PublicApi/Dockerfile'
-    buildContext: $(Build.SourcesDirectory)
-    tags: |
-      latest
+# - task: Docker@2
+#   displayName: Build and Push to DockerHub
+#   inputs:
+#     containerRegistry: 'test_docker'
+#     repository: 'phillipyeo/publicapi'
+#     command: 'buildAndPush'
+#     Dockerfile: '$(Build.SourcesDirectory)/src/PublicApi/Dockerfile'
+#     buildContext: $(Build.SourcesDirectory)
+#     tags: |
+#       latest
 
-- task: Docker@2
-  displayName: Build and Push to DockerHub
-  inputs:
-    containerRegistry: 'test_docker'
-    repository: 'phillipyeo/eShopWeb'
-    command: 'buildAndPush'
-    Dockerfile: '$(Build.SourcesDirectory)/src/Web/Dockerfile'
-    buildContext: $(Build.SourcesDirectory)
-    tags: |
-      latest
+# - task: Docker@2
+#   displayName: Build and Push to DockerHub
+#   inputs:
+#     containerRegistry: 'test_docker'
+#     repository: 'phillipyeo/eShopWeb'
+#     command: 'buildAndPush'
+#     Dockerfile: '$(Build.SourcesDirectory)/src/Web/Dockerfile'
+#     buildContext: $(Build.SourcesDirectory)
+#     tags: |
+#       latest
 
 # - script: echo "I can run inside the container (it starts by default)"
 #   target:
@@ -87,10 +87,10 @@ steps:
 #     command: start
 #     container: eshopweb
 
-- script: 'docker run -d --name eshopweb phillipyeo/sqlserver:latest -p 1433:1433'
+- script: 'docker run -d --name sqlserver phillipyeo/sqlserver:latest -p 1433:1433'
   displayName: 'Test Run Docker'
 
-- script: 'docker run -d --name eshopweb phillipyeo/publicapi:latest -p 5200:80'
+- script: 'docker run -d --name publicapi phillipyeo/publicapi:latest -p 5200:80'
   displayName: 'Test Run Docker'
 
 - script: 'docker run -d --name eshopweb phillipyeo/eshopweb:latest -p 5106:80'
