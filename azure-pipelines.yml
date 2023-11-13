@@ -49,6 +49,17 @@ steps:
   displayName: Build and Push to DockerHub
   inputs:
     containerRegistry: 'test_docker'
+    repository: 'phillipyeo/sqlserver'
+    command: 'buildAndPush'
+    Dockerfile: '$(Build.SourcesDirectory)/src/SqlServer/Dockerfile'
+    buildContext: $(Build.SourcesDirectory)
+    tags: |
+      latest
+
+- task: Docker@2
+  displayName: Build and Push to DockerHub
+  inputs:
+    containerRegistry: 'test_docker'
     repository: 'phillipyeo/publicapi'
     command: 'buildAndPush'
     Dockerfile: '$(Build.SourcesDirectory)/src/PublicApi/Dockerfile'
