@@ -86,7 +86,7 @@ steps:
     command: 'build'
     Dockerfile: '$(Build.SourcesDirectory)/src/Web/Dockerfile'
     buildContext: $(Build.SourcesDirectory)
-    arguments: '--build-arg CORECLR_PROFILER_PATH_64=/contrast/contentFiles/any/netstandard2.0/contrast/runtimes/linux-x64/native/ContrastProfiler.so --build-arg CORECLR_ENABLE_PROFILING=1 --build-arg CORECLR_PROFILER={8B2CE134-0948-48CA-A4B2-80DDAD9F5791} --build-arg CONTRAST__API__URL=https://eval.contrastsecurity.com/Contrast --build-arg CONTRAST__API__API_KEY=ZhSrghj5Yot67rMA43ROtOJm1Ufn1wJD --build-arg CONTRAST__API__SERVICE_KEY=Y87MVBN0Q87W3QL0 --build-arg CONTRAST__API__USER_NAME=agent_ad7c8156-e1b3-4570-aea3-c1f7d1226626@OnetPartner'
+    arguments: '--build-arg CORECLR_PROFILER_PATH_64=/contrast/contentFiles/any/netstandard2.0/contrast/runtimes/linux-x64/native/ContrastProfiler.so --build-arg CORECLR_ENABLE_PROFILING=1 --build-arg CORECLR_PROFILER={8B2CE134-0948-48CA-A4B2-80DDAD9F5791} --build-arg CONTRAST__API__URL=https://eval.contrastsecurity.com/Contrast --build-arg CONTRAST__API__API_KEY=ZhSrghj5Yot67rMA43ROtOJm1Ufn1wJD --build-arg CONTRAST__API__SERVICE_KEY=Y87MVBN0Q87W3QL0 --build-arg CONTRAST__API__USER_NAME=agent_ad7c8156-e1b3-4570-aea3-c1f7d1226626@OnetPartner --build-arg CONTRAST__APPLICATION__NAME=eShoppeOnWeb --build-arg CONTRAST__SERVER__NAME=DockerDotNETServer'
     tags: |
       latest
       $(Build.BuildId)
