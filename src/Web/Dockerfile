@@ -27,8 +27,9 @@ ENV ASPNETCORE_URLS http://+:80
 VOLUME ~/.aspnet/https:/root/.aspnet/https:ro
 VOLUME ~/.microsoft/usersecrets:/root/.microsoft/usersecrets:ro
 
+COPY --from=contrast/agent-dotnet-core:latest /contrast /contrast
 # VOLUME C:/contrast/
-ENV CORECLR_PROFILER_PATH_64=/contrast/contentFiles/any/netstandard2.0/contrast/runtimes/linux-x64/native/ContrastProfiler.so 
+ENV CORECLR_PROFILER_PATH_64=/contrast/runtimes/linux-x64/native/ContrastProfiler.so 
 ENV CORECLR_ENABLE_PROFILING=1 
 ENV CORECLR_PROFILER={8B2CE134-0948-48CA-A4B2-80DDAD9F5791} 
 ENV CONTRAST__API__URL=https://eval.contrastsecurity.com/Contrast 
