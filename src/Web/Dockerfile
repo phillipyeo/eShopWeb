@@ -26,5 +26,14 @@ ENV ASPNETCORE_ENVIRONMENT Docker
 ENV ASPNETCORE_URLS http://+:80
 VOLUME ~/.aspnet/https:/root/.aspnet/https:ro
 VOLUME ~/.microsoft/usersecrets:/root/.microsoft/usersecrets:ro
+ENV CORECLR_PROFILER_PATH_64=C:/agen/test_work/2/s/contrast/contentFiles/any/netstandard2.0/contrast/runtimes/linux-x64/native/ContrastProfiler.so 
+ENV CORECLR_ENABLE_PROFILING=1 
+ENV CORECLR_PROFILER={8B2CE134-0948-48CA-A4B2-80DDAD9F5791} 
+ENV CONTRAST__API__URL=https://eval.contrastsecurity.com/Contrast 
+ENV CONTRAST__API__API_KEY=ZhSrghj5Yot67rMA43ROtOJm1Ufn1wJD 
+ENV CONTRAST__API__SERVICE_KEY=Y87MVBN0Q87W3QL0 
+ENV CONTRAST__API__USER_NAME=agent_ad7c8156-e1b3-4570-aea3-c1f7d1226626@OnetPartner 
+ENV CONTRAST__APPLICATION__NAME=eShoppeOnWeb 
+ENV CONTRAST__SERVER__NAME=DockerDotNETServer'
 
 ENTRYPOINT ["dotnet", "Web.dll"]
