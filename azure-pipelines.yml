@@ -103,7 +103,7 @@ steps:
 # - script: 'tar -xvzf Contrast.SensorsNetCore.zip -C C:\contrast'
 #   displayName: 'Unzip'
 
-- script: 'docker network inspect eshopnet >/dev/null 2>&1 || docker network create --driver bridge eshopnet'
+- script: 'docker network inspect eshopnet >/dev/null || docker network create --driver bridge eshopnet'
   displayName: 'Create eshopnet'
 
 - script: 'docker run --rm -p 1433:1433 --name sqlserver --net eshopnet -d phillipyeo/sqlserver:latest'
