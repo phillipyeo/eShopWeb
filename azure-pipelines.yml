@@ -106,13 +106,13 @@ steps:
 - script: 'docker network create eshopnet'
   displayName: 'Test Run Docker'
 
-- script: 'docker run -p 1433:1433 --name sqlserver --net eshopnet -d phillipyeo/sqlserver:latest'
+- script: 'docker run --rm -p 1433:1433 --name sqlserver --net eshopnet -d phillipyeo/sqlserver:latest'
   displayName: 'Test Run Docker'
 
-- script: 'docker run -p 5200:80 --name publicapi --net eshopnet  -d  phillipyeo/publicapi:latest'
+- script: 'docker run --rm -p 5200:80 --name publicapi --net eshopnet  -d  phillipyeo/publicapi:latest'
   displayName: 'Test Run Docker'
 
-- script: 'docker run -p 5106:80 --name eshopweb --net eshopnet  -d phillipyeo/eshopweb:latest'
+- script: 'docker run --rm -p 5106:80 --name eshopweb --net eshopnet  -d phillipyeo/eshopweb:latest'
   displayName: 'Test Run Docker'
 
 # - task: Docker@2
