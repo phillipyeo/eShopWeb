@@ -27,7 +27,7 @@ ENV ASPNETCORE_URLS http://+:80
 VOLUME ~/.aspnet/https:/root/.aspnet/https:ro
 VOLUME ~/.microsoft/usersecrets:/root/.microsoft/usersecrets:ro
 
-VOLUME C:/agen/test_work/2/s/contrast/:/opt/contrast/
+VOLUME C:/contrast/:/opt/contrast/
 ENV CORECLR_PROFILER_PATH_64=/opt/contrast/contentFiles/any/netstandard2.0/contrast/runtimes/linux-x64/native/ContrastProfiler.so 
 ENV CORECLR_ENABLE_PROFILING=1 
 ENV CORECLR_PROFILER={8B2CE134-0948-48CA-A4B2-80DDAD9F5791} 
