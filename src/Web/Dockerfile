@@ -24,10 +24,11 @@ COPY --from=build /app/src/Web/out ./
 # Optional: Set this here if not setting it from docker-compose.yml
 ENV ASPNETCORE_ENVIRONMENT Docker
 ENV ASPNETCORE_URLS http://+:80
-VOLUME ~/.aspnet/https:/root/.aspnet/https:ro
-VOLUME ~/.microsoft/usersecrets:/root/.microsoft/usersecrets:ro
+# VOLUME ~/.aspnet/https:/root/.aspnet/https:ro
+# VOLUME ~/.microsoft/usersecrets:/root/.microsoft/usersecrets:ro
 
-COPY --from=contrast/agent-dotnet-core:latest /contrast /contrast
+# COPY --from=contrast/agent-dotnet-core:latest /contrast /contrast
+COPY /contrast /contrast
 # VOLUME C:/contrast/
 ENV CORECLR_PROFILER_PATH_64=/contrast/runtimes/linux-x64/native/ContrastProfiler.so 
 ENV CORECLR_ENABLE_PROFILING=1 
