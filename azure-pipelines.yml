@@ -103,11 +103,11 @@ steps:
 # - script: 'tar -xvzf Contrast.SensorsNetCore.zip -C C:\contrast'
 #   displayName: 'Unzip'
 
-- script: 'docker rm $(docker ps -a -q) -f'
-  displayName: 'Delete all containers'
+# - script: 'docker rm $(docker ps -a -q) -f'
+#   displayName: 'Delete all containers'
 
-- script: 'docker network prune -f'
-  displayName: 'Delete eshopnet'
+# - script: 'docker network prune -f'
+#   displayName: 'Delete eshopnet'
 
 - script: 'docker network create --driver bridge eshopnet'
   displayName: 'Create eshopnet'
