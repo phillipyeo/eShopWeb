@@ -27,7 +27,7 @@ ENV ASPNETCORE_URLS http://+:80
 # VOLUME ~/.aspnet/https:/root/.aspnet/https:ro
 # VOLUME ~/.microsoft/usersecrets:/root/.microsoft/usersecrets:ro
 
-COPY --from=contrast/agent-dotnet-core:latest /contrast /contrast
+# COPY --from=contrast/agent-dotnet-core:latest /contrast /contrast
 # COPY ./contrast /contrast
 # VOLUME C:/contrast/
 ENV CORECLR_PROFILER_PATH_64=/contrast/runtimes/linux-x64/native/ContrastProfiler.so 
