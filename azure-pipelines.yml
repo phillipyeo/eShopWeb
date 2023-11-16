@@ -103,7 +103,7 @@ steps:
 # - script: 'tar -xvzf Contrast.SensorsNetCore.zip -C C:\contrast'
 #   displayName: 'Unzip'
 
-- script: 'docker rm -f $(docker ps -aq)'
+- script: 'docker container prune -f'
   displayName: 'Delete all containers'
 
 - script: 'docker network prune -f'
