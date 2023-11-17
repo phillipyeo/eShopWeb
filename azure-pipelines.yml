@@ -92,8 +92,6 @@ steps:
       $(Build.BuildId)
 
 - script: echo $(Build.SourcesDirectory)
-  target:
-    container: phillipyeo/eShopWeb:latest
 
 # - script: echo "I can run inside the container (it starts by default)"
 #   target:
