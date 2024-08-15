@@ -19,7 +19,7 @@ RUN dotnet publish -c Release -o out
 
 FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS runtime
 WORKDIR /app
-COPY contrast /app/contrast
+# COPY contrast /app/contrast
 COPY --from=build /app/src/Web/out ./
 
 # Optional: Set this here if not setting it from docker-compose.yml
@@ -31,7 +31,7 @@ ENV ASPNETCORE_URLS http://+:80
 # COPY --from=contrast/agent-dotnet-core:latest /contrast /contrast
 # COPY ./contrast /contrast
 # VOLUME C:/contrast/
-ENV CORECLR_PROFILER_PATH_64=/app/contrast/runtimes/linux-x64/native/ContrastProfiler.so 
+ENV CORECLR_PROFILER_PATH_64=/contrast/runtimes/linux-x64/native/ContrastProfiler.so 
 ENV CORECLR_ENABLE_PROFILING=1 
 ENV CORECLR_PROFILER={8B2CE134-0948-48CA-A4B2-80DDAD9F5791} 
 ENV CONTRAST__API__URL=https://eval.contrastsecurity.com/Contrast 
