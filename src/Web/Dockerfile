@@ -19,8 +19,8 @@ RUN dotnet publish -c Release -o out
 
 FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS runtime
 WORKDIR /app
-# COPY ../contrast /contrast
-# COPY --from=build /app/src/Web/out ./
+COPY contrast /app/contrast
+COPY --from=build /app/src/Web/out ./
 
 # Optional: Set this here if not setting it from docker-compose.yml
 ENV ASPNETCORE_ENVIRONMENT Docker
@@ -31,14 +31,14 @@ ENV ASPNETCORE_URLS http://+:80
 # COPY --from=contrast/agent-dotnet-core:latest /contrast /contrast
 # COPY ./contrast /contrast
 # VOLUME C:/contrast/
-# ENV CORECLR_PROFILER_PATH_64=/contrast/runtimes/linux-x64/native/ContrastProfiler.so 
-# ENV CORECLR_ENABLE_PROFILING=1 
-# ENV CORECLR_PROFILER={8B2CE134-0948-48CA-A4B2-80DDAD9F5791} 
-# ENV CONTRAST__API__URL=https://eval.contrastsecurity.com/Contrast 
-# ENV CONTRAST__API__API_KEY=ZhSrghj5Yot67rMA43ROtOJm1Ufn1wJD 
-# ENV CONTRAST__API__SERVICE_KEY=Y87MVBN0Q87W3QL0 
-# ENV CONTRAST__API__USER_NAME=agent_ad7c8156-e1b3-4570-aea3-c1f7d1226626@OnetPartner 
-# ENV CONTRAST__APPLICATION__NAME=eShoppeOnWeb 
-# ENV CONTRAST__SERVER__NAME=DockerDotNETServer
+ENV CORECLR_PROFILER_PATH_64=/app/contrast/runtimes/linux-x64/native/ContrastProfiler.so 
+ENV CORECLR_ENABLE_PROFILING=1 
+ENV CORECLR_PROFILER={8B2CE134-0948-48CA-A4B2-80DDAD9F5791} 
+ENV CONTRAST__API__URL=https://eval.contrastsecurity.com/Contrast 
+ENV CONTRAST__API__API_KEY=ZhSrghj5Yot67rMA43ROtOJm1Ufn1wJD 
+ENV CONTRAST__API__SERVICE_KEY=Y87MVBN0Q87W3QL0 
+ENV CONTRAST__API__USER_NAME=agent_ad7c8156-e1b3-4570-aea3-c1f7d1226626@OnetPartner 
+ENV CONTRAST__APPLICATION__NAME=eShoppeOnWeb 
+ENV CONTRAST__SERVER__NAME=DockerDotNETServer
 
 ENTRYPOINT ["dotnet", "Web.dll"]
